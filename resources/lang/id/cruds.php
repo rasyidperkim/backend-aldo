@@ -51,7 +51,7 @@ return [
             'email_helper'             => ' ',
             'email_verified_at'        => 'Email verified at',
             'email_verified_at_helper' => ' ',
-            'password'                 => 'Password',
+            'password'                 => 'Kata Sandi',
             'password_helper'          => ' ',
             'roles'                    => 'Peran',
             'roles_helper'             => ' ',
