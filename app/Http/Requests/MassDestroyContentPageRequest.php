@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Models\ContentCategory;
+use App\Models\ContentPage;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class MassDestroyContentCategoryRequest extends FormRequest
+class MassDestroyContentPageRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('content_category_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('content_page_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }
@@ -20,7 +20,7 @@ class MassDestroyContentCategoryRequest extends FormRequest
     {
         return [
             'ids'   => 'required|array',
-            'ids.*' => 'exists:content_categories,id',
+            'ids.*' => 'exists:content_pages,id',
         ];
     }
 }

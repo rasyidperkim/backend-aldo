@@ -35,3 +35,4 @@ trait Auditable
             'host'         => request()->ip() ?? null,
         ]);
     }
+}
