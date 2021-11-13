@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Ipal;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
@@ -44,6 +44,7 @@ class StoreIpalRequest extends FormRequest
             ],
             'capacity' => [
                 'numeric',
+                'max:99999,99',
             ],
             'services.*' => [
                 'integer',

@@ -3,10 +3,10 @@
 @can('build_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.builds.create') }}">
+            <a class="btn btn-success mt-2" href="{{ route('admin.builds.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.build.title_singular') }}
             </a>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+            <button class="btn btn-warning mt-2" data-toggle="modal" data-target="#csvImportModal">
                 {{ trans('global.app_csvImport') }}
             </button>
             @include('csvImport.modal', ['model' => 'Build', 'route' => 'admin.builds.parseCsvImport'])
@@ -15,7 +15,7 @@
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.build.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.build.title_singular') }}
     </div>
 
     <div class="card-body">
@@ -25,7 +25,7 @@
                     <th width="10">
 
                     </th>
-                    <th>
+                    <th width="10">
                         {{ trans('cruds.build.fields.id') }}
                     </th>
                     <th>
@@ -63,7 +63,7 @@
                     <td>
                     </td>
                     <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        <input class="search" type="text" placeholder="{{ trans('global.search') }}" <input class="search" type="text" placeholder="{{ trans('global.search') }}" style="width:40px;">
                     </td>
                     <td>
                         <select class="search">
@@ -77,7 +77,7 @@
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
-                        <select class="search">
+                        <select class="search" id="kecamatan">
                             <option value>{{ trans('global.all') }}</option>
                             @foreach($kecamatans as $key => $item)
                                 <option value="{{ $item->name }}">{{ $item->name }}</option>
@@ -85,7 +85,7 @@
                         </select>
                     </td>
                     <td>
-                        <select class="search">
+                        <select class="search" id="kelurahan">
                             <option value>{{ trans('global.all') }}</option>
                             @foreach($kelurahans as $key => $item)
                                 <option value="{{ $item->name }}">{{ $item->name }}</option>
@@ -177,18 +177,18 @@
     ajax: "{{ route('admin.builds.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'categories_type', name: 'categories.type' },
-{ data: 'address', name: 'address' },
-{ data: 'kecamatans_name', name: 'kecamatans.name' },
-{ data: 'kelurahans_name', name: 'kelurahans.name' },
-{ data: 'lat', name: 'lat' },
-{ data: 'lng', name: 'lng' },
-{ data: 'year', name: 'year' },
-{ data: 'status', name: 'status' },
-{ data: 'funded', name: 'funded' },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
-    ],
+        { data: 'id', name: 'id' },
+        { data: 'categories_type', name: 'categories.type' },
+        { data: 'address', name: 'address' },
+        { data: 'kecamatans_name', name: 'kecamatans.name' },
+        { data: 'kelurahans_name', name: 'kelurahans.name' },
+        { data: 'lat', name: 'lat' },
+        { data: 'lng', name: 'lng' },
+        { data: 'year', name: 'year' },
+        { data: 'status', name: 'status'},
+        { data: 'funded', name: 'funded' },
+        { data: 'actions', name: '{{ trans('global.actions') }}' }
+            ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 10,

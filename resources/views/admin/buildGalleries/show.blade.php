@@ -38,7 +38,7 @@
                         <td>
                             @if($buildGallery->photo)
                                 <a href="{{ $buildGallery->photo->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $buildGallery->photo->getUrl('thumb') }}">
+                                    <img src="{{ $buildGallery->photo->getUrl() }}">
                                 </a>
                             @endif
                         </td>

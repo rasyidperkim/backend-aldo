@@ -3,10 +3,10 @@
 @can('density_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.densities.create') }}">
+            <a class="btn btn-success mt-2" href="{{ route('admin.densities.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.density.title_singular') }}
             </a>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+            <button class="btn btn-warning mt-2" data-toggle="modal" data-target="#csvImportModal">
                 {{ trans('global.app_csvImport') }}
             </button>
             @include('csvImport.modal', ['model' => 'Density', 'route' => 'admin.densities.parseCsvImport'])
@@ -15,7 +15,7 @@
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.density.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.density.title_singular') }}
     </div>
 
     <div class="card-body">

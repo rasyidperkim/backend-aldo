@@ -3,10 +3,10 @@
 @can('secured_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.secureds.create') }}">
+            <a class="btn btn-success mt-2" href="{{ route('admin.secureds.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.secured.title_singular') }}
             </a>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+            <button class="btn btn-warning mt-2" data-toggle="modal" data-target="#csvImportModal">
                 {{ trans('global.app_csvImport') }}
             </button>
             @include('csvImport.modal', ['model' => 'Secured', 'route' => 'admin.secureds.parseCsvImport'])
@@ -15,7 +15,7 @@
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.secured.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.secured.title_singular') }}
     </div>
 
     <div class="card-body">
@@ -31,9 +31,6 @@
                         </th>
                         <th>
                             {{ trans('cruds.secured.fields.kecamatan') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.secured.fields.access') }}
                         </th>
                         <th>
                             {{ trans('cruds.secured.fields.communal') }}
@@ -66,9 +63,6 @@
                             </td>
                             <td>
                                 {{ $secured->kecamatan->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $secured->access->secure ?? '' }}
                             </td>
                             <td>
                                 {{ $secured->communal ?? '' }}
@@ -109,9 +103,9 @@
     </div>
 </div>
 
-
-
 @endsection
+
+
 @section('scripts')
 @parent
 <script>

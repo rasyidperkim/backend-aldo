@@ -14,7 +14,7 @@ class CreateIpalsTable extends Migration
             $table->string('address');
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
-            $table->float('capacity', 3, 2)->nullable();
+            $table->float('capacity', 7, 2)->nullable();
             $table->string('year')->nullable();
             $table->string('slug')->nullable();
             $table->timestamps();

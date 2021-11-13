@@ -7,7 +7,7 @@ use App\Http\Requests\MassDestroyKecamatanRequest;
 use App\Http\Requests\StoreKecamatanRequest;
 use App\Http\Requests\UpdateKecamatanRequest;
 use App\Models\Kecamatan;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -74,4 +74,19 @@ class KecamatanController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+    // public function select(Request $request)
+    // {
+    //     $kecamatans = [];
+
+    //     if ($request->has('q')) {
+    //         $search = $request->q;
+    //         $kecamatans = Kecamatan::select("id", "name")
+    //             ->Where('name', 'LIKE', "%$search%")
+    //             ->get();
+    //     } else {
+    //         $kecamatans = Kecamatan::limit(5)->get();
+    //     }
+    //     return response()->json($kecamatans);
+    // }
 }

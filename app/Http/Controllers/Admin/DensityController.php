@@ -9,7 +9,7 @@ use App\Http\Requests\StoreDensityRequest;
 use App\Http\Requests\UpdateDensityRequest;
 use App\Models\Density;
 use App\Models\Kelurahan;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 

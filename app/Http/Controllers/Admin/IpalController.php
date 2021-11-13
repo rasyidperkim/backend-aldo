@@ -11,7 +11,7 @@ use App\Http\Requests\UpdateIpalRequest;
 use App\Models\Category;
 use App\Models\Ipal;
 use App\Models\Kelurahan;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;

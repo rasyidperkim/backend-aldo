@@ -66,7 +66,7 @@ trait CsvImportTrait
     {
         $file = $request->file('csv_file');
         $request->validate([
-            'csv_file' => 'mimes:csv,txt,xls,xlsx',
+            'csv_file' => 'mimes:csv,txt',
         ]);
 
         $path      = $file->path();

@@ -3,7 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Models\Category;
-use Gate;
+// use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 

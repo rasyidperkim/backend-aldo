@@ -39,4 +39,10 @@ class Kelurahan extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    // // Kelurahan -> Sarana (One to Many)
+    // public function builds()
+    // {
+    //     return $this->hasOne(Build::class);
+    // }
 }

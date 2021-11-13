@@ -223,7 +223,7 @@ return [
             'deleted_at_helper' => ' ',
             'name'              => 'Name',
             'name_helper'       => ' ',
-            'capacity'          => 'Capacity',
+            'capacity'          => "Capacity m3/days",
             'capacity_helper'   => ' ',
             'service'           => 'Service Area',
             'service_helper'    => ' ',

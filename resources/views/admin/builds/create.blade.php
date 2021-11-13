@@ -32,8 +32,8 @@
             <div class="form-group">
                 <label class="required" for="kecamatans_id">{{ trans('cruds.build.fields.kecamatans') }}</label>
                 <select class="form-control select2 {{ $errors->has('kecamatans') ? 'is-invalid' : '' }}" name="kecamatans_id" id="kecamatans_id" required>
-                    @foreach($kecamatans as $id => $entry)
-                        <option value="{{ $id }}" {{ old('kecamatans_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @foreach($kecamatans as $id => $kecamatan)
+                        <option value="{{ $id }}" {{ old('kecamatans_id') == $id ? 'selected' : '' }}>{{ $kecamatan }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('kecamatans'))
@@ -43,13 +43,11 @@
             </div>
             <div class="form-group">
                 <label class="required" for="kelurahans_id">{{ trans('cruds.build.fields.kelurahans') }}</label>
-                <select class="form-control select2 {{ $errors->has('kelurahans') ? 'is-invalid' : '' }}" name="kelurahans_id" id="kelurahans_id" required>
-                    @foreach($kelurahans as $id => $entry)
-                        <option value="{{ $id }}" {{ old('kelurahans_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
+                <select class="form-control select2 {{ $errors->has('kelurahans_id') ? 'is-invalid' : '' }}" name="kelurahans_id" id="kelurahans_id" required>
+                        <option value="" selected>{{ trans('global.pleaseSelect') }}</option>
                 </select>
-                @if($errors->has('kelurahans'))
-                    <span class="text-danger">{{ $errors->first('kelurahans') }}</span>
+                @if($errors->has('kelurahans_id'))
+                    <span class="text-danger">{{ $errors->first('kelurahans_id') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.build.fields.kelurahans_helper') }}</span>
             </div>
@@ -120,3 +118,18 @@
 
 
 @endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        $("#kecamatans_id").change(function(){
+            $.ajax({
+                url: "{{ route('admin.kelurahans.grab') }}?kecamatans_id=" + $(this).val(),
+                method: 'GET',
+                success: function(data) {
+                    $('#kelurahans_id').html(data.html);
+                }
+            });
+        });
+    </script>
+@endsection
+

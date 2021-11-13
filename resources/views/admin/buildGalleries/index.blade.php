@@ -11,7 +11,7 @@
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.buildGallery.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.buildGallery.title_singular') }}
     </div>
 
     <div class="card-body">
@@ -85,11 +85,11 @@
     aaSorting: [],
     ajax: "{{ route('admin.build-galleries.index') }}",
     columns: [
-      { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'build_address', name: 'build.address' },
-{ data: 'photo', name: 'photo', sortable: false, searchable: false },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
+    { data: 'placeholder', name: 'placeholder' },
+    { data: 'id', name: 'id' },
+    { data: 'build_address', name: 'build.address' },
+    { data: 'photo', name: 'photo', sortable: false, searchable: false },
+    { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],

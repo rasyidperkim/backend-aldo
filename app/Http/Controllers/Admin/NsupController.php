@@ -11,7 +11,7 @@ use App\Models\Category;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
 use App\Models\Nsup;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;

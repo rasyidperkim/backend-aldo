@@ -11,8 +11,9 @@ use App\Models\Build;
 use App\Models\Category;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -60,6 +61,10 @@ class BuildController extends Controller
                 return $row->kelurahans ? $row->kelurahans->name : '';
             });
 
+            $table->editColumn('kelurahans.kecamatans_id', function ($row) {
+                return $row->kelurahans ? $row->kelurahans->kelurahans_id : '';
+            });
+
             $table->editColumn('lat', function ($row) {
                 return $row->lat ? $row->lat : '';
             });
@@ -70,8 +75,10 @@ class BuildController extends Controller
                 return $row->year ? Build::YEAR_SELECT[$row->year] : '';
             });
             $table->editColumn('status', function ($row) {
-                return $row->status ? Build::STATUS_RADIO[$row->status] : '';
+                return '<div class="badge ' . ($row->status == "Aktif" ? 'badge-success' : ($row->status == "Perlu Perbaikan" ? 'badge-warning' : 'badge-danger')) . '">' . ($row->status ? Build::STATUS_RADIO[$row->status] : '') . '</div>';
             });
+
+
             $table->editColumn('funded', function ($row) {
                 return $row->funded ? Build::FUNDED_SELECT[$row->funded] : '';
             });
@@ -79,7 +86,7 @@ class BuildController extends Controller
                 return $row->categories ? $row->categories->type : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'kecamatans', 'kelurahans', 'categories']);
+            $table->rawColumns(['actions', 'placeholder', 'kecamatans', 'kelurahans', 'categories', 'status']);
 
             return $table->make(true);
         }
@@ -95,7 +102,7 @@ class BuildController extends Controller
     {
         abort_if(Gate::denies('build_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $kecamatans = Kecamatan::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $kecamatans = Kecamatan::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $kelurahans = Kelurahan::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -157,4 +164,33 @@ class BuildController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+    // public function myform()
+    // {
+    //     $kecamatans = DB::table("kecamatans")->lists("name", "id");
+    //     return view('admin.kecamatans.create', compact('kecamatans'));
+    // }
+
+
+    /**
+     * Get Ajax Request and restun Data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    // public function myformAjax($id)
+    // {
+    //     $kelurahans = DB::table("kelurahans")
+    //         ->where("kecamatans_id", $id)
+    //         ->lists("name", "id");
+    //     return json_encode($kelurahans);
+    // }
+
+    // public function getKelurahan(Request $request)
+    // {
+    //     $kelurahans = DB::table("kelurahans")
+    //         ->where("kecamatans_id", $request->kecamatans_id)
+    //         ->pluck("name", "id");
+    //     return response()->json($kelurahans);
+    // }
+
 }

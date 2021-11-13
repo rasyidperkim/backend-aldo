@@ -5,6 +5,7 @@ namespace Tests\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
+use App\Models\User;
 
 /**
  * @internal
@@ -14,11 +15,11 @@ class SecuredTest extends DuskTestCase
 {
     public function testIndex()
     {
-        $admin = App\Models\User::find(1);
+        $admin = User::find(1);
         $this->browse(function (Browser $browser) use ($admin) {
             $browser->loginAs($admin);
-            $browser->visit(route('admin.secured.index'));
-            $browser->assertRouteIs('admin.secured.index');
+            $browser->visit(route('admin.secureds.index'));
+            $browser->assertRouteIs('admin.secureds.index');
         });
     }
 }

@@ -8,7 +8,7 @@ use App\Http\Requests\MassDestroyInfographicRequest;
 use App\Http\Requests\StoreInfographicRequest;
 use App\Http\Requests\UpdateInfographicRequest;
 use App\Models\Infographic;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;

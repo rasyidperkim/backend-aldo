@@ -27,7 +27,7 @@
                 <span class="help-block">{{ trans('cruds.infographic.fields.content_helper') }}</span>
             </div>
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn-danger confirm_save" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

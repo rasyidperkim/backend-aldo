@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\KecamatanController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
@@ -26,10 +30,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('users', 'UsersController');
 
     // Kecamatan
+    // Route::get('kecamatans/kecamatans', 'KecamatanController@select')->name('kecamatans.select');
     Route::delete('kecamatans/destroy', 'KecamatanController@massDestroy')->name('kecamatans.massDestroy');
     Route::resource('kecamatans', 'KecamatanController');
 
     // Kelurahan
+    // Route::get('kelurahans/kelurahans', 'KelurahanController@select')->name('kelurahans.select');
+    // Route::get('kelurahans/grab', 'KelurahanController@grab')->name('kelurahans.grab');
+    Route::get('kelurahans/getKelurahan', 'KelurahanController@getKelurahan')->name('kelurahans.getKelurahan');
     Route::delete('kelurahans/destroy', 'KelurahanController@massDestroy')->name('kelurahans.massDestroy');
     Route::resource('kelurahans', 'KelurahanController');
 
@@ -40,10 +48,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('categories', 'CategoryController');
 
     // Build
+    // Route::get('myform', array('as' => 'myform', 'uses' => 'BuildController@myform'));
+    // // Route::get('myform/ajax/{id}', array('as' => 'myform.ajax', 'uses' => 'BuildController@myformAjax'));
+    // Route::post('builds/kelurahan', 'BuildController@kelurahan')->name('builds.kelurahan');
+    // Route::get('builds/getKelurahan', 'BuildController@getKelurahan')->name('builds.getKelurahan');
     Route::delete('builds/destroy', 'BuildController@massDestroy')->name('builds.massDestroy');
     Route::post('builds/parse-csv-import', 'BuildController@parseCsvImport')->name('builds.parseCsvImport');
     Route::post('builds/process-csv-import', 'BuildController@processCsvImport')->name('builds.processCsvImport');
     Route::resource('builds', 'BuildController');
+
 
     // Nsup
     Route::delete('nsups/destroy', 'NsupController@massDestroy')->name('nsups.massDestroy');

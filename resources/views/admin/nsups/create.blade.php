@@ -36,9 +36,7 @@
             <div class="form-group">
                 <label class="required" for="kelurahans_id">{{ trans('cruds.nsup.fields.kelurahans') }}</label>
                 <select class="form-control select2 {{ $errors->has('kelurahans') ? 'is-invalid' : '' }}" name="kelurahans_id" id="kelurahans_id" required>
-                    @foreach($kelurahans as $id => $entry)
-                        <option value="{{ $id }}" {{ old('kelurahans_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
+                        <option value="">{{ trans('global.pleaseSelect') }}</option>
                 </select>
                 @if($errors->has('kelurahans'))
                     <span class="text-danger">{{ $errors->first('kelurahans') }}</span>
@@ -86,3 +84,18 @@
 
 
 @endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        $("#kecamatans_id").change(function(){
+            $.ajax({
+                url: "{{ route('admin.kelurahans.grab') }}?kecamatans_id=" + $(this).val(),
+                method: 'GET',
+                success: function(data) {
+                    $('#kelurahans_id').html(data.html);
+                }
+            });
+        });
+    </script>
+@endsection
+

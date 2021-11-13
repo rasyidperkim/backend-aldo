@@ -38,4 +38,16 @@ class Kecamatan extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    // // Kecamatan -> Kelurahan (One to Many)
+    // public function kelurahans()
+    // {
+    //     return $this->hasMany(Kelurahan::class);
+    // }
+
+    // // Kecamatan -> Sarana (One to Many)
+    // public function builds()
+    // {
+    //     return $this->hasOne(Build::class);
+    // }
 }

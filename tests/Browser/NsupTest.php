@@ -5,6 +5,7 @@ namespace Tests\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
+use App\Models\User;
 
 /**
  * @internal
@@ -14,11 +15,11 @@ class NsupTest extends DuskTestCase
 {
     public function testIndex()
     {
-        $admin = App\Models\User::find(1);
+        $admin = User::find(1);
         $this->browse(function (Browser $browser) use ($admin) {
             $browser->loginAs($admin);
-            $browser->visit(route('admin.nsup.index'));
-            $browser->assertRouteIs('admin.nsup.index');
+            $browser->visit(route('admin.nsups.index'));
+            $browser->assertRouteIs('admin.nsups.index');
         });
     }
 }

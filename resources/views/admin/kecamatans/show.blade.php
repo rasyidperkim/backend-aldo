@@ -35,7 +35,7 @@
                         <th>
                             {{ trans('cruds.kecamatan.fields.color') }}
                         </th>
-                        <td>
+                        <td style="background-color: {{ $kecamatan->color }} ">
                             {{ $kecamatan->color }}
                         </td>
                     </tr>

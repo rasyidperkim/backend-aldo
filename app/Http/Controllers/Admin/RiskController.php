@@ -8,7 +8,7 @@ use App\Http\Requests\StoreRiskRequest;
 use App\Http\Requests\UpdateRiskRequest;
 use App\Models\Kelurahan;
 use App\Models\Risk;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;

@@ -37,9 +37,7 @@
                         </th>
                         <td>
                             @if($category->icon)
-                                <a href="{{ $category->icon->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $category->icon->getUrl('thumb') }}">
-                                </a>
+                                <img src="{{ $category->icon->getUrl('thumb') }}">           
                             @endif
                         </td>
                     </tr>

@@ -9,7 +9,7 @@ use App\Http\Requests\UpdateSecuredRequest;
 use App\Models\Kecamatan;
 use App\Models\Sanitation;
 use App\Models\Secured;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -21,7 +21,7 @@ class SecuredController extends Controller
     {
         abort_if(Gate::denies('secured_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $secureds = Secured::with(['kecamatan', 'access'])->get();
+        $secureds = Secured::with(['kecamatan'])->get();
 
         return view('admin.secureds.index', compact('secureds'));
     }
@@ -32,9 +32,7 @@ class SecuredController extends Controller
 
         $kecamatans = Kecamatan::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $accesses = Sanitation::pluck('secure', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.secureds.create', compact('kecamatans', 'accesses'));
+        return view('admin.secureds.create', compact('kecamatans'));
     }
 
     public function store(StoreSecuredRequest $request)
@@ -50,11 +48,9 @@ class SecuredController extends Controller
 
         $kecamatans = Kecamatan::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $accesses = Sanitation::pluck('secure', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $secured->load('kecamatan');
 
-        $secured->load('kecamatan', 'access');
-
-        return view('admin.secureds.edit', compact('kecamatans', 'accesses', 'secured'));
+        return view('admin.secureds.edit', compact('kecamatans', 'secured'));
     }
 
     public function update(UpdateSecuredRequest $request, Secured $secured)
@@ -68,7 +64,7 @@ class SecuredController extends Controller
     {
         abort_if(Gate::denies('secured_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $secured->load('kecamatan', 'access');
+        $secured->load('kecamatan');
 
         return view('admin.secureds.show', compact('secured'));
     }

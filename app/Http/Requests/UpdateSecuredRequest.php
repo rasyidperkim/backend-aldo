@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Secured;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
@@ -18,10 +18,6 @@ class UpdateSecuredRequest extends FormRequest
     {
         return [
             'kecamatan_id' => [
-                'required',
-                'integer',
-            ],
-            'access_id' => [
                 'required',
                 'integer',
             ],

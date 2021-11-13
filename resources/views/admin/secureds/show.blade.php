@@ -33,14 +33,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.secured.fields.access') }}
-                        </th>
-                        <td>
-                            {{ $secured->access->secure ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.secured.fields.communal') }}
                         </th>
                         <td>

@@ -30,7 +30,6 @@ class Secured extends Model
 
     protected $fillable = [
         'kecamatan_id',
-        'access_id',
         'communal',
         'individual',
         'mck_user',
@@ -44,11 +43,6 @@ class Secured extends Model
     public function kecamatan()
     {
         return $this->belongsTo(Kecamatan::class, 'kecamatan_id');
-    }
-
-    public function access()
-    {
-        return $this->belongsTo(Sanitation::class, 'access_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

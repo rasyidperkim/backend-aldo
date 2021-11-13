@@ -9,7 +9,7 @@ use App\Http\Requests\StoreBuildGalleryRequest;
 use App\Http\Requests\UpdateBuildGalleryRequest;
 use App\Models\Build;
 use App\Models\BuildGallery;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;

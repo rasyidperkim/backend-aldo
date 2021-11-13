@@ -23,18 +23,6 @@
                 <span class="help-block">{{ trans('cruds.secured.fields.kecamatan_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="access_id">{{ trans('cruds.secured.fields.access') }}</label>
-                <select class="form-control select2 {{ $errors->has('access') ? 'is-invalid' : '' }}" name="access_id" id="access_id" required>
-                    @foreach($accesses as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('access_id') ? old('access_id') : $secured->access->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('access'))
-                    <span class="text-danger">{{ $errors->first('access') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.secured.fields.access_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label class="required" for="communal">{{ trans('cruds.secured.fields.communal') }}</label>
                 <input class="form-control {{ $errors->has('communal') ? 'is-invalid' : '' }}" type="number" name="communal" id="communal" value="{{ old('communal', $secured->communal) }}" step="1" required>
                 @if($errors->has('communal'))
@@ -80,7 +68,7 @@
                 <span class="help-block">{{ trans('cruds.secured.fields.year_helper') }}</span>
             </div>
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn-danger confirm_save" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

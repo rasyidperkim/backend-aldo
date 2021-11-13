@@ -88,8 +88,8 @@
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.tasks.index') }}">
-                    {{ trans('global.back_to_list') }}
+                <a class="btn btn-default" href="{{ route('admin.tasks-calendars.index') }}">
+                    {{ trans('global.calendar') }}
                 </a>
             </div>
         </div>

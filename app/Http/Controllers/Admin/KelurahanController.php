@@ -8,8 +8,9 @@ use App\Http\Requests\StoreKelurahanRequest;
 use App\Http\Requests\UpdateKelurahanRequest;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -51,9 +52,9 @@ class KelurahanController extends Controller
                 return $row->kecamatans ? $row->kecamatans->name : '';
             });
 
-            $table->editColumn('kecamatans.color', function ($row) {
-                return $row->kecamatans ? (is_string($row->kecamatans) ? $row->kecamatans : $row->kecamatans->color) : '';
-            });
+            // $table->editColumn('kecamatans.color', function ($row) {
+            //     return $row->kecamatans ? (is_string($row->kecamatans) ? $row->kecamatans : $row->kecamatans->color) : '';
+            // });
 
             $table->rawColumns(['actions', 'placeholder', 'kecamatans']);
 
@@ -121,4 +122,45 @@ class KelurahanController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+    public function grab(Request $request)
+    {
+        abort_unless(Gate::allows('build_create'), 401);
+
+        if (!$request->kecamatans_id) {
+            $html = '<option value="">' . trans('global.pleaseSelect') . '</option>';
+        } else {
+            $html = '';
+            $kelurahans = Kelurahan::where('kecamatans_id', $request->kecamatans_id)->get();
+            foreach ($kelurahans as $kelurahan) {
+                $html .= '<option value="' . $kelurahan->id . '">' . $kelurahan->name . '</option>';
+            }
+        }
+
+        return response()->json(['html' => $html]);
+    }
+
+    // public function getKelurahan(Request $request)
+    // {
+    //     $kelurahans = DB::table("kelurahans")
+    //         ->where("kecamatans_id", $request->kecamatans_id)
+    //         ->pluck("name", "id");
+    //     return response()->json($kelurahans);
+    // }
+
+    // public function select(Request $request)
+    // {
+    //     $kelurahans = [];
+    //     $kecamatanID = $request->kecamatanID;
+    //     if ($request->has('q')) {
+    //         $search = $request->q;
+    //         $kelurahans = Kelurahan::select("id", "name")
+    //             ->where('kecamatans_id', $kecamatanID)
+    //             ->Where('name', 'LIKE', "%$search%")
+    //             ->get();
+    //     } else {
+    //         $kelurahans = Kelurahan::where('kecamatans_id', $kecamatanID)->limit(10)->get();
+    //     }
+    //     return response()->json($kelurahans);
+    // }
 }

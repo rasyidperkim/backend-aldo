@@ -5,6 +5,7 @@ namespace Tests\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
+use App\Models\User;
 
 /**
  * @internal
@@ -14,11 +15,11 @@ class ContentTagTest extends DuskTestCase
 {
     public function testIndex()
     {
-        $admin = App\Models\User::find(1);
+        $admin = User::find(1);
         $this->browse(function (Browser $browser) use ($admin) {
             $browser->loginAs($admin);
-            $browser->visit(route('admin.contenttag.index'));
-            $browser->assertRouteIs('admin.contenttag.index');
+            $browser->visit(route('admin.content-tags.index'));
+            $browser->assertRouteIs('admin.content-tags.index');
         });
     }
 }

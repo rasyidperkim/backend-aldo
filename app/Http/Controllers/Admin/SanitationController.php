@@ -8,7 +8,7 @@ use App\Http\Requests\StoreSanitationRequest;
 use App\Http\Requests\UpdateSanitationRequest;
 use App\Models\Kecamatan;
 use App\Models\Sanitation;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 

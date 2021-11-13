@@ -3,10 +3,10 @@
 @can('nsup_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.nsups.create') }}">
+            <a class="btn btn-success mt-2" href="{{ route('admin.nsups.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.nsup.title_singular') }}
             </a>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+            <button class="btn btn-warning mt-2" data-toggle="modal" data-target="#csvImportModal">
                 {{ trans('global.app_csvImport') }}
             </button>
             @include('csvImport.modal', ['model' => 'Nsup', 'route' => 'admin.nsups.parseCsvImport'])
@@ -15,7 +15,7 @@
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.nsup.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.nsup.title_singular') }}
     </div>
 
     <div class="card-body">
@@ -54,7 +54,7 @@
                     <td>
                     </td>
                     <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        <input class="search" type="text" placeholder="{{ trans('global.search') }}" style="width:40px;">
                     </td>
                     <td>
                         <select class="search">

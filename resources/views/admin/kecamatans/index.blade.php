@@ -11,7 +11,7 @@
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.kecamatan.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.kecamatan.title_singular') }}
     </div>
 
     <div class="card-body">
@@ -48,7 +48,7 @@
                             <td>
                                 {{ $kecamatan->name ?? '' }}
                             </td>
-                            <td>
+                            <td style="background-color: {{ $kecamatan->color ?? '' }}">
                                 {{ $kecamatan->color ?? '' }}
                             </td>
                             <td>
@@ -65,10 +65,10 @@
                                 @endcan
 
                                 @can('kecamatan_delete')
-                                    <form action="{{ route('admin.kecamatans.destroy', $kecamatan->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                    <form action="{{ route('admin.kecamatans.destroy', $kecamatan->id) }}" method="POST" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        <input type="submit" class="btn btn-xs btn-danger show_confirm" value="{{ trans('global.delete') }}">
                                     </form>
                                 @endcan
 
@@ -130,8 +130,35 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
+
   
 })
 
+
+</script>
+<script type="text/javascript">
+    $('.show_confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          Swal.fire({
+              title: '{{ trans('global.areYouSure') }}',
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: '{{ trans('global.yesDelete') }}'
+          }).then((willDelete) => {
+            if (willDelete.isConfirmed) {
+              form.submit();
+
+              Swal.fire(
+                'Terhapus !',
+                'Data Kamu Berhasil Dihapus',
+                'success'
+                )
+            }
+          });
+      });
 </script>
 @endsection

@@ -3,10 +3,10 @@
 @can('sanitation_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.sanitations.create') }}">
+            <a class="btn btn-success mt-2" href="{{ route('admin.sanitations.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.sanitation.title_singular') }}
             </a>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+            <button class="btn btn-warning mt-2" data-toggle="modal" data-target="#csvImportModal">
                 {{ trans('global.app_csvImport') }}
             </button>
             @include('csvImport.modal', ['model' => 'Sanitation', 'route' => 'admin.sanitations.parseCsvImport'])
@@ -15,7 +15,7 @@
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.sanitation.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.sanitation.title_singular') }}
     </div>
 
     <div class="card-body">

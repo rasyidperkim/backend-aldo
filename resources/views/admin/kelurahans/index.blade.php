@@ -11,7 +11,7 @@
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.kelurahan.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.kelurahan.title_singular') }}
     </div>
 
     <div class="card-body">
@@ -30,9 +30,9 @@
                     <th>
                         {{ trans('cruds.kelurahan.fields.kecamatans') }}
                     </th>
-                    <th>
+                    {{-- <th>
                         {{ trans('cruds.kecamatan.fields.color') }}
-                    </th>
+                    </th> --}}
                     <th>
                         &nbsp;
                     </th>
@@ -92,7 +92,7 @@
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'kecamatans_name', name: 'kecamatans.name' },
-{ data: 'kecamatans.color', name: 'kecamatans.color' },
+// { data: 'kecamatans.color', name: 'kecamatans.color' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

@@ -11,8 +11,6 @@ class AddRelationshipFieldsToSecuredsTable extends Migration
         Schema::table('secureds', function (Blueprint $table) {
             $table->unsignedBigInteger('kecamatan_id');
             $table->foreign('kecamatan_id', 'kecamatan_fk_5274240')->references('id')->on('kecamatans');
-            $table->unsignedBigInteger('access_id');
-            $table->foreign('access_id', 'access_fk_5274241')->references('id')->on('sanitations');
         });
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\User;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
@@ -35,7 +35,6 @@ class UpdateUserRequest extends FormRequest
                 'string',
                 'min:11',
                 'max:14',
-                'required',
                 'unique:users,phone,' . request()->route('user')->id,
             ],
             'roles.*' => [

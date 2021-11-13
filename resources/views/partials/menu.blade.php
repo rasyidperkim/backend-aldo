@@ -7,7 +7,9 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
-
+        <div class="info">
+            <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+        </div>
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -176,7 +178,7 @@
                                         <i class="fa-fw nav-icon fas fa-exclamation-triangle">
 
                                         </i>
-                                        <p>
+                                        <p class="text-wrap">
                                             {{ trans('cruds.risk.title') }}
                                         </p>
                                     </a>

@@ -11,7 +11,7 @@
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.category.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.category.title_singular') }}
     </div>
 
     <div class="card-body">
@@ -28,7 +28,7 @@
                         <th>
                             {{ trans('cruds.category.fields.type') }}
                         </th>
-                        <th>
+                        <th class="text-center">
                             {{ trans('cruds.category.fields.icon') }}
                         </th>
                         <th>
@@ -50,8 +50,8 @@
                             </td>
                             <td>
                                 @if($category->icon)
-                                    <a href="{{ $category->icon->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $category->icon->getUrl('thumb') }}">
+                                    <a href="{{ $category->icon->getUrl() }}" target="_blank">
+                                        <img src="{{ $category->icon->getUrl('thumb') }}" class="img-thumbnail rounded mx-auto d-block">
                                     </a>
                                 @endif
                             </td>

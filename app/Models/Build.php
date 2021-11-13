@@ -15,9 +15,9 @@ class Build extends Model
     use HasFactory;
 
     public const STATUS_RADIO = [
-        'Aktif'           => 'Active',
-        'Non-aktif'       => 'Non-Active',
-        'Perlu Perbaikan' => 'Need Improvement',
+        'Aktif'           => 'Aktif',
+        'Non-aktif'       => 'Non-Aktif',
+        'Perlu Perbaikan' => 'Perlu Perbaikan',
     ];
 
     public const YEAR_SELECT = [
@@ -52,7 +52,7 @@ class Build extends Model
     protected $fillable = [
         'categories_id',
         'address',
-        'kecamatans_id',
+        // 'kecamatans_id',
         'kelurahans_id',
         'lat',
         'lng',
@@ -78,6 +78,11 @@ class Build extends Model
     {
         return $this->belongsTo(Kelurahan::class, 'kelurahans_id');
     }
+
+    // public function kelurahans()
+    // {
+    //     return $this->hasMany(Kecamatan::class, 'kecamatans_id');
+    // }
 
     protected function serializeDate(DateTimeInterface $date)
     {
